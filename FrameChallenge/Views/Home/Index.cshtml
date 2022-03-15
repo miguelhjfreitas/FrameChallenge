@@ -1,0 +1,31 @@
+﻿@model NumberDivider
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    @using (Html.BeginForm("getDividers", "Home", FormMethod.Get))
+    {
+    <h1 class="display-4">Divisores</h1>
+    <label>Digite o numero</label>
+    <input type="number" id="number" name="number" />
+    <button type="submit">Encontrar Divisores</button>
+    }
+</div>
+@if (Model is not null)
+{
+<div>
+    <h1>Numero @Model.Number</h1>
+    <h2>Divisores</h2>
+    @foreach (int divider in Model.Dividers)
+    {
+        <label>@divider</label>
+    }
+    <h2>Divisores Primos</h2>
+    @foreach (int primeDividers in Model.PrimeDividers)
+    {
+        <label>@primeDividers</label>
+    }
+</div>
+}
